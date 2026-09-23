@@ -1,1 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Customer Arrival</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="logo">
+            CUSTOMER ARRIVAL
+        </div>
+
+        <h1 id="locationTitle">
+            Welcome
+        </h1>
+
+        <p id="locationMessage">
+            Please notify staff that you have arrived.
+        </p>
+
+        <button id="notifyButton">
+            NOTIFY STAFF
+        </button>
+
+        <p id="statusMessage"></p>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+Después baja hasta abajo y presiona:
+
+Commit changes
+
+¿Qué acabamos de hacer?
+
+Muy sencillo:
+
+index.html es la estructura de nuestra página.
+
+Le estamos diciendo al navegador:
+
+Quiero una página llamada Customer Arrival.
+
+Y tenemos:
+
+CUSTOMER ARRIVAL
+
+Welcome
+
+Please notify staff that you have arrived.
+
+[ NOTIFY STAFF ]
+
+Todavía se verá bastante fea 😅.
+
+Eso es normal.
+
+Porque todavía no hemos creado:
+
+style.css
+
+ni
+
+script.js
+
+PASO 4 — Crear el diseño
+
+Ahora:
+
+Add file → Create new file
+
+Nombre:
+
+style.css
+
+Y aquí vamos a poner el diseño.
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+
+    background: white;
+
+    padding: 40px 25px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+
+    margin-bottom: 35px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#notifyButton {
+    width: 100%;
+
+    margin-top: 35px;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #222;
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#notifyButton:active {
+    transform: scale(0.98);
+}
+
+#statusMessage {
+    margin-top: 25px;
+
+    font-weight: bold;
+}
+
+Y nuevamente:
+
+Commit changes
+
+PASO 5 — Crear el funcionamiento
+
+Ahora creamos:
+
+script.js
+
+Y ponemos:
+
+const params = new URLSearchParams(window.location.search);
+
+const location = params.get("location");
+
+const locations = {
+
+    pickup: {
+        name: "PICK UP",
+        message: "Please notify staff that you have arrived at Pick Up."
+    },
+
+    doorA: {
+        name: "DOOR A",
+        message: "Please notify staff that you have arrived at Door A."
+    },
+
+    lax: {
+        name: "LAX DOOR",
+        message: "Please notify staff that you have arrived at LAX Door."
+    },
+
+    doorB: {
+        name: "DOOR B",
+        message: "Please notify staff that you have arrived at Door B."
+    }
+
+};
+
+const locationTitle = document.getElementById("locationTitle");
+const locationMessage = document.getElementById("locationMessage");
+const notifyButton = document.getElementById("notifyButton");
+const statusMessage = document.getElementById("statusMessage");
+
+if (locations[location]) {
+
+    locationTitle.textContent = locations[location].name;
+
+    locationMessage.textContent =
+        locations[location].message;
+
+} else {
+
+    locationTitle.textContent = "Welcome";
+
+    locationMessage.textContent =
+        "Please select your arrival location.";
+
+}
+
+notifyButton.addEventListener("click", function() {
+
+    statusMessage.textContent =
+        "Your notification has been sent. Please wait for assistance.";
+
+    notifyButton.disabled = true;
+
+});
+
+Y:
+
+Commit changes
+
+¿Qué logramos con esto?
+
+Aquí empieza lo interesante.
+
+Podremos tener una sola página, pero cuatro direcciones diferentes.
+
+Por ejemplo:
+
+https://TUUSUARIO.github.io/customer-arrival/?location=pickup
+
+mostrará:
+
+🔴
+
+PICK UP
+
+Esta:
+
+https://TUUSUARIO.github.io/customer-arrival/?location=doorA
+
+mostrará:
+
+🔵
+
+DOOR A
+
+Esta:
+
+https://TUUSUARIO.github.io/customer-arrival/?location=lax
+
+mostrará:
+
+🟡
+
+LAX DOOR
+
+Y:
+
+https://TUUSUARIO.github.io/customer-arrival/?location=doorB
+
+mostrará:
+
+🟣
+
+DOOR B
+
+PERO OJO ⚠️
+
+En este momento TODAVÍA NO tenemos las notificaciones reales.
+
+El botón solamente demuestra el funcionamiento de la página.
+
+Eso es intencional.
+
+Primero vamos a conseguir:
+
+QR → página correcta → botón → confirmación
+
+Después agregaremos:
+
+→ horario
+
+→ ON/OFF
+
+→ sistema de notificación
+
+→ panel del empleado
+
+→ los 4 QR reales
+
+De esta manera, si algo falla, sabemos exactamente dónde está el problema.
+
+Y GitHub Pages nos permite publicar los archivos estáticos de esta aplicación directamente desde el repositorio.
+
+AHORA NO HAGAS LOS SIGUIENTES PASOS TODAVÍA
+
+Haz solamente PASO 2:
+
+Crea el repositorio customer-arrival.
+
+Cuando lo tengas creado, dime “YA ESTÁ” y seguimos juntos con PASO 3, y te voy diciendo exactamente dónde hacer clic y dónde pegar el HTML. No vamos a saltarnos pasos.
+
+Files, images, and data analysis are unavailable until usage resets at 6:30 PM. Continue chatting with text only, or upgrade for more access.
+Upgrade to Plus
+
+Cybernews
+
+Build an App, No Code
+
+Make real apps with no coding in 2026.
+
+Ad
+More options
