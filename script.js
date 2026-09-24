@@ -6,22 +6,26 @@ const locations = {
 
     pickup: {
         name: "PICK UP",
-        message: "Please notify staff that you have arrived at Pick Up."
+        message: "Please notify staff that you have arrived at Pick Up.",
+        color: "#d32f2f"
     },
 
     doorA: {
         name: "DOOR A",
-        message: "Please notify staff that you have arrived at Door A."
+        message: "Please notify staff that you have arrived at Door A.",
+        color: "#1976d2"
     },
 
     lax: {
         name: "LAX DOOR",
-        message: "Please notify staff that you have arrived at LAX Door."
+        message: "Please notify staff that you have arrived at LAX Door.",
+        color: "#f9a825"
     },
 
     doorB: {
         name: "DOOR B",
-        message: "Please notify staff that you have arrived at Door B."
+        message: "Please notify staff that you have arrived at Door B.",
+        color: "#7b1fa2"
     }
 
 };
@@ -37,6 +41,9 @@ if (locations[location]) {
 
     locationMessage.textContent =
         locations[location].message;
+
+    notifyButton.style.backgroundColor =
+        locations[location].color;
 
 } else {
 
@@ -55,3 +62,4 @@ notifyButton.addEventListener("click", function() {
     notifyButton.disabled = true;
 
 });
+
