@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #f2f2f2;
     min-height: 100vh;
 
     display: flex;
@@ -18,7 +18,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 450px;
+    max-width: 430px;
 
     background: white;
 
@@ -28,24 +28,26 @@ body {
 
     text-align: center;
 
-    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
 .logo {
     font-size: 18px;
     font-weight: bold;
+    letter-spacing: 1px;
 
     margin-bottom: 35px;
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 36px;
     margin-bottom: 15px;
 }
 
-p {
+#locationMessage {
     font-size: 18px;
     line-height: 1.5;
+    color: #555;
 }
 
 #notifyButton {
@@ -53,16 +55,16 @@ p {
 
     margin-top: 35px;
 
-    padding: 20px;
+    padding: 22px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     background: #222;
     color: white;
 
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bold;
 
     cursor: pointer;
@@ -72,8 +74,15 @@ p {
     transform: scale(0.98);
 }
 
+#notifyButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 #statusMessage {
     margin-top: 25px;
+
+    font-size: 16px;
 
     font-weight: bold;
 }
