@@ -53,7 +53,7 @@ notifyButton.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "https://teowxwsnmfizuidqheve.supabase.co/functions/v1/Customer-Arrival",
+            "https://teowxwsnmfizuidqheve.supabase.co/functions/v1/CUSTOMER-ARRIVAL",
             {
                 method: "POST",
 
